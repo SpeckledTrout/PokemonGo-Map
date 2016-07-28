@@ -211,6 +211,15 @@ function removePokemonMarker(encounter_id) {
 }
 
 function initMap() {
+  if (window.location.hash) {
+    var params = window.location.hash.split("/@");
+
+    if (params.length > 1) {
+      var coords = params[1].split(',');
+      center_lat = Number(coords[0]);
+      center_lng = Number(coords[1]);
+    }
+  }
   map = new google.maps.Map(document.getElementById('map'), {
     center: {
       lat: center_lat,
